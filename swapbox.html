@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Swapbox</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&family=Roboto:ital,wght@0,400;0,500;0,900;1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box; ;
+        }
+
+        .logo {
+            height: 34.15px;
+            width: 90px;
+        }
+
+        .logo img {
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: hidden;
+            height: 100%;
+        }
+        .content {
+            width: 400px;
+            height: 100vh;
+            border: 1px solid #ebf0f3;
+        }
+
+        .container_header > h1 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .container_item {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .container_item .item {
+            width: 50%;
+            height: 100%;
+            border: 1px solid transparent;
+            margin-bottom: 10px;
+        }
+
+        .item:hover {
+            border-color: rgb(87, 255, 87);
+            border-radius: 50px;
+        }
+
+        .item > a {
+            display: flex;
+            text-decoration: none;
+            color: #000;
+            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        #toast {
+            position: fixed;
+            top: 32px;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            background-color: #ffc021;
+            border-radius: 50px;
+            padding: 14px 10px;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIntop 0.3s ease, fadeOut linear 1s 1.5s forwards;
+            margin-bottom: 5px;
+        }
+
+        .toast__icon {
+            font-size: 16px;
+            margin-right: 10px;
+            color: #b48101;
+        }
+
+        @keyframes slideIntop {
+            from {
+                opacity: 0;
+                transform: translateY(calc(-100% - 34px));
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="content">
+            <div class="header">
+                <div class="logo">
+                    <img src="../BTTHL_CSE391/assets/img/SwapBoxlogo.svg" alt="">
+                </div>
+            </div>
+            <div class="container">
+                <div class="container_header">
+                    <h1>Connect Wallet</h1>
+                </div>
+                <div class="container_item">
+                    <div class="item" onclick="toast('No provider has found', '2000')">
+                        <a href="javascript:void(0);">
+                        <div class="item-img">
+                            <img src="../BTTHL_CSE391/assets/img/metamasklogo.svg" alt="">
+                        </div>
+                        <div class="item-name">
+                            <h2>MetaMask</h2>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="item" onclick="toast('No provider has found', '2000')">
+                        <a href="javascript:void(0);">
+                        <div class="item-img">
+                            <img src="../BTTHL_CSE391/assets/img/naboxlogo.svg" alt="" style="width: 26px;">
+                        </div>
+                        <div class="item-name">
+                            <h2>Nabox</h2>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="toast">
+            <!-- <div class="toast">
+                <div class="toast__icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">No provider has found</h3>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        function toast(message, duration) {
+            var toast = document.getElementById('toast');
+            var toastMessage = document.createElement('DIV');
+            toastMessage.classList.add('toast');
+            toastMessage.innerHTML = `
+                <div class="toast__icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">${message}</h3>
+                </div>
+            `;
+            toast.appendChild(toastMessage);
+            setTimeout(function () {
+                toastMessage.remove();
+            }, duration);
+        }
+    </script>
+</body>
+</html>
