@@ -94,7 +94,7 @@ body{
     height: 40px;
     display: flex;
     align-items: center;
-    background-color: #3dbdfb;
+    background-color: #00fa89;
     border-radius: 15px;
     margin: 20px 0;
 }
@@ -147,7 +147,7 @@ header.row{
     border: none;
     outline: none;
     border-radius:15px;
-    background-color: rgb(212, 0, 244);
+    background-color: rgb(0, 244, 138);
     position: absolute;
     right: 0;
 }
@@ -176,7 +176,7 @@ header.row{
     font-size: 10px;
     height: 18px;
     width: 18px;
-    background-color: red;
+    background-color: lightblue;
     position: absolute;
     top: -6px;
     right: -6px;
